@@ -1,30 +1,28 @@
-import React from "react";
-import SectionHeader from "../Common/SectionHeader";
-import BlogItem from "./BlogItem";
-import BlogData from "./blogData";
+import { getPosts } from "@/sanity/sanity-utils";
+import SectionTitle from "../Common/SectionTitle";
+import SingleBlog from "./SingleBlog";
 
 const Blog = async () => {
-  return (
-    <section className="py-20 lg:py-25 xl:py-30">
-      <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
-        {/* <!-- Section Title Start --> */}
-        <div className="animate_top mx-auto text-center">
-          <SectionHeader
-            headerInfo={{
-              title: `NEWS & BLOGS`,
-              subtitle: `Latest News & Blogs`,
-              description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
-            }}
-          />
-        </div>
-        {/* <!-- Section Title End --> */}
-      </div>
+  const posts = await getPosts();
 
-      <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
-        <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-          {BlogData.slice(0, 3).map((blog, key) => (
-            <BlogItem blog={blog} key={key} />
-          ))}
+  return (
+    <section
+      id="blog"
+      className="bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28"
+    >
+      <div className="container">
+        <SectionTitle
+          title="Latest Blogs"
+          paragraph=" "
+          center
+        />
+
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
+          {posts?.length > 0 ? (
+            posts.map((blog, index) => <SingleBlog key={index} blog={blog} />)
+          ) : (
+            <p>No posts found</p>
+          )}
         </div>
       </div>
     </section>

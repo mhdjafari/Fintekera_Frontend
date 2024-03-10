@@ -1,5 +1,7 @@
 import BlogData from "@/components/Blog/blogData";
-import BlogItem from "@/components/Blog/BlogItem";
+import SingleBlog from "@/components/Blog/SingleBlog";
+// import BlogItem from "@/components/Blog/BlogItem";
+import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const BlogPage = async () => {
+    const posts = await getPosts();
   return (
     <>
       {/* <!-- ===== Blog Grid Start ===== --> */}
@@ -18,6 +21,12 @@ const BlogPage = async () => {
             {BlogData.map((post, key) => (
               <BlogItem key={key} blog={post} />
             ))}
+            {/*
+            {posts.length > 0 &&
+              posts.map((post, key) => (
+                <BlogItem key={key} blog={post} />
+              ))}
+              */}
           </div>
         </div>
       </section>

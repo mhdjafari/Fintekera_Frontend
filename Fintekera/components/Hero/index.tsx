@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import Reveal from "../Common/Reveal";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -15,22 +16,23 @@ const Hero = () => {
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           <div className="flex lg:items-center lg:gap-8 xl:gap-32.5">
             <div className=" md:w-1/2">
-              <h4 className="mb-4.5 text-lg font-medium text-black dark:text-white">
-                🔥 Solid - A Complete SaaS Web Template
-              </h4>
-              <h1 className="mb-5 pr-16 text-3xl font-bold text-black dark:text-white xl:text-hero ">
-                Free Next.js Template for {"   "}
-                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark ">
-                  SaaS
-                </span>
-              </h1>
-              <p>
-                Solid Pro - Packed with all the key integrations you need for
-                swift SaaS startup launch, including - Auth, Database, Sanity
-                Blog, Essential Components, Pages and More. Built-winth -
-                Next.js 13, React 18 and TypeScript.
-              </p>
-
+             <div
+                className="wow fadeInUp mx-auto max-w-[800px] text-center"
+                data-wow-delay=".2s"
+              >
+                <Reveal y={15}>
+                  <h1 className="mb-5 font-bold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight md:text-4xl md:leading-tight">
+                    Cutting-Edge AI-Powered Solutions for Income and Ability-to-Pay Verifications{" "}
+                  </h1>
+                </Reveal>
+                <Reveal y={5}>
+                  <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                        Discover the transformative potential of our technology, <br />
+                        redefining the customer verification process
+                  </p>
+                </Reveal>
+              </div>
+              <Reveal y={15}>
               <div className="mt-10">
                 <form onSubmit={handleSubmit}>
                   <div className="flex flex-wrap gap-5">
@@ -54,6 +56,7 @@ const Hero = () => {
                   Try for free no credit card required.
                 </p>
               </div>
+              </Reveal>
             </div>
 
             <div className="animate_right hidden md:w-1/2 lg:block">

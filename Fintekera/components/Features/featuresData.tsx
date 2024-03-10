@@ -4,44 +4,49 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: "/images/icon/icon-01.svg",
-    title: "Crafted for SaaS",
+    title: "High Accuracy ",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Fintekera delivers precise outcomes driven by advanced AI and machine learning algorithms. Our product \
+      supports all job titles, experience levels, job industries, and locations.",
   },
   {
     id: 2,
     icon: "/images/icon/icon-02.svg",
-    title: "High-quality Design",
+    title: "Effortless Integration",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Experience a smooth and seamless verification process with Fintekera's API network. Designed to seamlessly \
+      integrate into your system, it ensures a user-friendly and efficient workflow.",
   },
   {
     id: 3,
     icon: "/images/icon/icon-03.svg",
-    title: "Next.js 13 + TypeScript",
+    title: "Privacy Centric Design",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+    "With Fintekera, safeguarding user privacy is paramount. Our service requires no personal \
+    information for income verification, ensuring a secure and confidential experience.",
   },
   {
     id: 4,
     icon: "/images/icon/icon-04.svg",
-    title: "Sanity Blog and Docs",
+    title: "Instantaneous Results",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+    "Fintekera empowers businesses by providing lightning-fast income verification, delivering results \
+    within seconds.",
   },
   {
     id: 5,
     icon: "/images/icon/icon-05.svg",
-    title: "DB, Auth and Stripe",
+    title: "Inclusive Solution",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+     "Unlike other services, Fintekera can successfully verify income for customers whom traditional \
+       methods may overlook, promoting inclusivity in financial services.",
   },
   {
     id: 6,
     icon: "/images/icon/icon-06.svg",
-    title: "Regular Free Updates",
+    title: "Predictive Risk Scores",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.",
+      "Fintekera provides predictive risk scores designed to assist in evaluating income and ability-to-pay.",
   },
 ];
 

@@ -1,33 +1,22 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const SidebarLink = () => {
+const SidebarLink = ({ post }) => {
+  const pathUrl = usePathname();
+
   return (
     <>
       <li className="block">
         <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm bg-stroke px-3 py-2 text-base text-black dark:bg-blackho dark:text-white`}
+          href={`/docs/${post?.slug}`}
+          className={`text-base py-2 px-3 rounded-sm flex w-full ${
+            pathUrl === `/docs/${post?.slug}`
+              ? "text-black dark:text-white bg-gray-light dark:bg-white/5"
+              : "text-body-color dark:text-body-color-dark dark:hover:bg-white/5 hover:bg-gray-light"
+          }`}
         >
-          Introduction
-        </Link>
-        <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
-        >
-          Bootstrap Template Guide
-        </Link>
-        <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
-        >
-          Style Guide
-        </Link>
-        <Link
-          href={`/docs`}
-          className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
-        >
-          Using Tailwind Components
+          {post?.title}
         </Link>
       </li>
     </>
