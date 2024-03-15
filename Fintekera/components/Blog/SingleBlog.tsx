@@ -24,7 +24,7 @@ export default function SingleBlog({ blog }) {
             src={imageBuilder(mainImage).url()}
             alt={title}
             fill
-            className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+            className="rounded-lg transition-all duration-300 hover:scale-110"
           />
         </Link>
         <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">

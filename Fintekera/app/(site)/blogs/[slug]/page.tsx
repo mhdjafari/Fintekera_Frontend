@@ -13,11 +13,10 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { slug } = params;
   const post = await getPost(slug);
-
   const siteURL = process.env.NEXT_PUBLIC_SITE_URL;
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
-  console.log('post', post)
-  const authorName = post.author.name;
+//   console.log('post', post)
+  const authorName = post?.author?.name;
 
 
   if (post) {
@@ -77,10 +76,13 @@ export async function generateMetadata({ params }: Props) {
 export default async function Post({ params }: Props) {
   const { slug } = params;
   const post = await getPost(slug);
-
+//   console.log(typeof post?.body);
+//   console.log('body', post?.body);
+//   console.log('post:', post)
+//   console.log(imageBuilder(post?.author?.image).url())
   return (
     <>
-      <section className="pt-[150px] pb-[120px]">
+      <section className="pt-[150px] pb-[120px] flex justify-center">
         <div className="container">
           <div className="flex flex-wrap justify-center -mx-4">
             <div className="w-full px-4 lg:w-8/12">
@@ -94,7 +96,8 @@ export default async function Post({ params }: Props) {
                       <div className="mr-4">
                         <div className="relative w-10 h-10 overflow-hidden rounded-full">
                           <Link
-                            href={`/blogs/author/${post?.author?.slug?.current}`}
+                            href={`/blogs/author/${post?.author?.name}`}
+//                             href={`/blogs/author/${post?.author?.slug?.current || ''}`}
                           >
                             <Image
                               src={imageBuilder(post?.author?.image).url()}
@@ -108,7 +111,8 @@ export default async function Post({ params }: Props) {
                         <p className="mb-1 text-base text-body-color dark:text-body-color-dark">
                           By
                           <Link
-                            href={`/blogs/author/${post?.author?.slug?.current}`}
+                            href={`/blogs/author/${post?.author?.name}`}
+//                             href={`/blogs/author/${post?.author?.slug?.current || ''}`}
                           >
                             {" "}
                             {post?.author?.name}
@@ -196,7 +200,7 @@ export default async function Post({ params }: Props) {
                   </div>
 
                   <div className="mb-12 blog-details">
-                    <PortableText value={post?.body} />
+                     <PortableText value={post?.body} />
                   </div>
 
                   <div className="items-center justify-between sm:flex">

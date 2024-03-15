@@ -27,17 +27,17 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="animate_top w-1/2 lg:w-1/4"
               >
-                <a href="index.html" className="relative">
+                <a href="/" className="relative">
                   <Image
-                    width={110}
-                    height={80}
+                    width={180}
+                    height={120}
                     src="/images/logo/logo-light.svg"
                     alt="Logo"
                     className="dark:hidden"
                   />
                   <Image
-                    width={110}
-                    height={80}
+                    width={220}
+                    height={160}
                     src="/images/logo/logo-dark.svg"
                     alt="Logo"
                     className="hidden dark:block"
@@ -62,7 +62,7 @@ const Footer = () => {
                 </p>
                <ul className="flex items-center gap-5">
                 <li>
-                  <a href="https://www.facebook.com/salarypulse" aria-label="social-link" title = "Facebook">
+                  <a href="https://www.facebook.com/Fintekera" aria-label="social-link" title = "Facebook">
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"
@@ -86,7 +86,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/salarypulse" aria-label="social-link" title = "Twitter/X">
+                  <a href="https://twitter.com/fintekera" aria-label="social-link" title = "Twitter/X">
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"
@@ -110,7 +110,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/company/salarypulse/" aria-label="social-link" title = "Linkedin">
+                  <a href="https://www.linkedin.com/company/fintekera/" aria-label="social-link" title = "Linkedin">
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"
@@ -134,7 +134,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/salarypulse" aria-label="social-link" title="Instagram">
+                  <a href="https://www.instagram.com/fintekera/" aria-label="social-link" title="Instagram">
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"
@@ -155,7 +155,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.youtube.com/@SalaryPulse" aria-label="social-link" title = "Youtube" >
+                  <a href="https://www.youtube.com/@fintekera" aria-label="social-link" title = "Youtube" >
                     <svg
                       className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                       width="24"
@@ -176,9 +176,7 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
-
-
-              </motion.div>
+            </motion.div>
 
               <div className="flex w-full flex-col gap-8 md:flex-row md:justify-between md:gap-0 lg:w-2/3 xl:w-7/12">
                 {/*
@@ -388,12 +386,12 @@ const Footer = () => {
             >
               <ul className="flex items-center gap-8">
                 <li>
-                  <a href="#" className="hover:text-primary">
+                  <a href="/terms" className="hover:text-primary">
                     Terms of Service
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary">
+                  <a href="/privacy" className="hover:text-primary">
                     Privacy Policy
                   </a>
                 </li>

@@ -1,3 +1,48 @@
+//{
+//  "compilerOptions": {
+//    "lib": [
+//      "dom",
+//      "dom.iterable",
+//      "esnext"
+//    ],
+//    "baseUrl": ".",
+//    "allowJs": true,
+//    "skipLibCheck": true,
+//    "strict": false,
+//    "forceConsistentCasingInFileNames": true,
+//    "noEmit": true,
+//    "incremental": true,
+//    "esModuleInterop": true,
+//    "module": "esnext",
+//    "moduleResolution": "node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "jsx": "preserve",
+//    "plugins": [
+//      {
+//        "name": "next"
+//      }
+//    ],
+//    "paths": {
+//      "@/*": [
+//        "./*",
+//      ],
+//      "react": [ "./node_modules/@types/react" ]
+//    },
+//    "strictNullChecks": true
+//  },
+//  "include": [
+//    "next-env.d.ts",
+//    "**/*.ts",
+//    "**/*.tsx",
+//    ".next/types/**/*.ts"
+//  ],
+//  "exclude": [
+//    "node_modules"
+//  ]
+//}
+//
+
 {
   "compilerOptions": {
     "lib": [
@@ -6,6 +51,11 @@
       "esnext"
     ],
     "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -22,23 +72,16 @@
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": [
-        "./*",
-      ],
-      "react": [ "./node_modules/@types/react" ]
-    },
-    "strictNullChecks": true
+    ]
   },
   "include": [
     "next-env.d.ts",
+    ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    "build/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ]
 }
- 

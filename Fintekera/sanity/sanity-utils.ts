@@ -42,7 +42,7 @@ export const getPosts = async () => {
 export const getPost = async (slug: string) => {
   const data: Blog = await sanityFetch({
     query: postQueryBySlug,
-    qParams: { slug },
+    qParams: { slug } ,
     tags: ["post", "author", "tagDetail"],
   });
 
@@ -52,7 +52,7 @@ export const getPost = async (slug: string) => {
 export const getPostsByTag = async (tag: string) => {
   const data: Blog[] = await sanityFetch({
     query: postQueryByTag,
-    qParams: { tag },
+    qParams: { tag } as QueryParams,
     tags: ["post", "author", "tagDetail"],
   });
 

@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+//  reactStrictMode: true,
+//  swcMinify: true,
   images: {
-    domains: ["fintekera.com"],
+    domains: ["fintekera"],
     remotePatterns: [
       {
         protocol: "https",
