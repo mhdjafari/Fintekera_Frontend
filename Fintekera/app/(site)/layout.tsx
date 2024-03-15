@@ -10,9 +10,20 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react"
 import GoogleAnalytics from "@/components/GoogleAnalytic";
 import "../globals.css";
+import Prism from "prismjs";
 const inter = Inter({ subsets: ["latin"] });
+import { useEffect } from "react";
 
 import ToasterContext from "../context/ToastContext";
+
+
+function applyCodeHighlighting() {
+  const codeBlocks = document.querySelectorAll("pre");
+  codeBlocks.forEach((codeBlock) => {
+    Prism.highlightElement(codeBlock);
+  });
+}
+
 
 export default function RootLayout({
   children,
