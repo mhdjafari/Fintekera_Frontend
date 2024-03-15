@@ -4,8 +4,8 @@ import { getAllPosts } from "@/lib/markdown";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Docs Page - Startup Pro",
-  description: "This is Docs Page for Startup Pro",
+  title: "API Docs Page",
+  description: "This is Docs Page for Fintekera API",
   // other metadata
 };
 

@@ -1,9 +1,9 @@
 export default function Head() {
   return (
     <>
-      <title> Solid | Next.js Template for Startup and SaaS</title>
+      <title> Fintekera: Unlock Financial Possibilities</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="Built with Next.js and TypeScript" />
+      <meta name="description" content="Unlock Financial Possibilities" />
       <link rel="icon" href="/images/favicon.ico" />
     </>
   );
