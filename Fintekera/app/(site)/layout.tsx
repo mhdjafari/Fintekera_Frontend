@@ -6,6 +6,9 @@ import Lines from "@/components/Lines";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
+import GoogleAnalytics from "@/components/GoogleAnalytic";
 import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +19,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  useEffect(() => {
+    applyCodeHighlighting();
+    Prism.highlightAll();
+  }, []);
+
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`dark:bg-black ${inter.className}`}>
+       {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+        <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      ) : null}
+
         <ThemeProvider
           enableSystem={false}
           attribute="class"
@@ -28,6 +42,8 @@ export default function RootLayout({
           <Header />
           <ToasterContext />
           {children}
+        <Analytics />
+        <SpeedInsights />
           <Footer />
           <ScrollToTop />
         </ThemeProvider>
