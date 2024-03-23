@@ -88,29 +88,25 @@ const Contact = () => {
     event.preventDefault();
     //       console.log(enteredEmail, enteredFullName, enteredMessage.split(/\s+/).length);
 
-    // Check if the entered email is valid
-    if (!isValidEmail(enteredEmail)) {
-      setEmailError("Enter a valid email address!");
+    // Check maximum name length
+    if (!enteredFullName.trim()) {
+      setNameError("Invalid Name!");
       return; // Prevent further execution
     }
+
+    // Check if the entered email is valid
+    if (!isValidEmail(enteredEmail)) {
+      setEmailError("Invalid Email!");
+      return; // Prevent further execution
+    }
+    console.log('enteredMessage', enteredMessage.split(/\s+/).length )
 
     // Check maximum message length
     if (enteredMessage.split(/\s+/).length > 200) {
-      setMessageError("Message should be less than 200 words.");
+      setMessageError("Must be less than 200 words!");
       return; // Prevent further execution
     }
 
-    // Check maximum name length
-    if (enteredFullName.split(/\s+/).length > 10) {
-      setNameError("Name should be less than 10 words.");
-      return; // Prevent further execution
-    }
-
-    // Check maximum full name length
-    if (enteredFullName.split(/\s+/).length > 10) {
-      setNameError("Full name should be less than 10 words.");
-      return; // Prevent further execution
-    }
 
     const userData = {
       full_name: enteredFullName.toString(),
@@ -184,19 +180,28 @@ const Contact = () => {
                 method="POST"
               >
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    onChange={handleFullNameChange}
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
-
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    onChange={handleEmailChange}
-                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
-                  />
+                  <div className="lg:w-1/2">
+                    <input
+                      type="text"
+                      placeholder="Full Name"
+                      onChange={handleFullNameChange}
+                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                    />
+                    {nameError && (
+                      <p className="text-red-500 text-sm">{nameError}</p>
+                    )}
+                  </div>
+                  <div className="lg:w-1/2">
+                        <input
+                          type="email"
+                          placeholder="Email"
+                          onChange={handleEmailChange}
+                          className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                        />
+                        {emailError && (
+                          <p className="text-red-500 text-sm">{emailError}</p>
+                        )}
+                  </div>
                 </div>
 
                 <div className="mb-12.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
@@ -215,13 +220,16 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="mb-11.5 flex">
-                  <textarea
-                    placeholder="Message"
-                    onChange={handleMessageChange}
-                    rows={4}
-                    className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                  ></textarea>
+                <div className="mb-11.5 flex flex-col"> {/* Container with flex-direction column */}
+                    <textarea
+                        placeholder="Message"
+                        onChange={handleMessageChange}
+                        rows={4}
+                        className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                    ></textarea>
+                    {messageError && (
+                        <p className="text-red-500 text-sm">{messageError}</p>
+                    )}
                 </div>
 
                 <div className="flex flex-wrap gap-4 xl:justify-between ">

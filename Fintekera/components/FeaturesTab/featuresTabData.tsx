@@ -11,8 +11,8 @@ const featuresTabData: FeatureTab[] = [
     desc5: "• Rent affordability evaluation",
     desc6: "• Security deposit assessment",
     desc7: "",
-    image: "/images/features/property-managers.jpg",
-    imageDark: "/images/features/property-managers-dark.jpg"
+    image: "/images/features/property-management.jpg",
+    imageDark: "/images/features/features-dark-01.svg"
   },
   {
     id: "tabTwo",
