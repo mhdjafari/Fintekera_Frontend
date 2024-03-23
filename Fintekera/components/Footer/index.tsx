@@ -351,7 +351,7 @@ const Footer = () => {
                     */}
                     <li>
                       <a
-                        href="/blog"
+                        href="/blogs"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Blog
