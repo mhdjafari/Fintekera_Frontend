@@ -150,9 +150,9 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-
+          {/*}
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
-            {/*<ThemeToggler />*/}
+            <ThemeToggler />
 
             <Link
               href="/auth/signin"
@@ -168,6 +168,7 @@ const Header = () => {
               Sign Up
             </Link>
           </div>
+          */}
         </div>
       </div>
     </header>

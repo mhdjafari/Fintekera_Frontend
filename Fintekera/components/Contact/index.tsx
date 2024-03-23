@@ -1,13 +1,46 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+const saveUserMSGToDatabase = async (userData) => {
+  try {
+    // Make a fetch or Axios request to your server API to save data to the PostgreSQL database
+    const response = await fetch(
+      "https://api.fintekera.com/admin/contact-us-fin",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "api-key": process.env.BACKEND_API_KEY, // Use environment variable
+        },
+        body: JSON.stringify(userData),
+      }
+    );
+
+    // Handle the response as needed
+    if (response.ok) {
+      console.log("Contact message is saved successfully!");
+    } else {
+      console.error("Error saving user message:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error saving user message:", error.message);
+  }
+};
+
+// Function to validate email format
+const isValidEmail = (email) => {
+// Regular expression to validate email format
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+return emailRegex.test(email);
+};
+
 
 const Contact = () => {
-  /**
-   * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-   * Reason: To fix rehydration error
-   */
+{/*}
   const [hasMounted, setHasMounted] = React.useState(false);
   React.useEffect(() => {
     setHasMounted(true);
@@ -15,6 +48,92 @@ const Contact = () => {
   if (!hasMounted) {
     return null;
   }
+  */}
+
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredFullName, setEnteredFullName] = useState("");
+  const [enteredMessage, setEnteredMessage] = useState("");
+  const [enteredPhone, setEnteredPhone] = useState("");
+  const [enteredSubject, setEnteredSubject] = useState("");
+
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
+  const [nameError, setNameError] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEnteredEmail(event.target.value);
+    setEmailError(""); // Clear any existing error message when user starts typing
+  };
+
+  const handleFullNameChange = (event) => {
+    setEnteredFullName(event.target.value);
+    setNameError(""); // Clear any existing error message when user starts typing
+  };
+
+  const handlePhoneChange = (event) => {
+    setEnteredPhone(event.target.value);
+//     setPhoneError(""); // Clear any existing error message when user starts typing
+  };
+  const handleSubjectChange = (event) => {
+    setEnteredSubject(event.target.value);
+//     setSubjectError(""); // Clear any existing error message when user starts typing
+  };
+
+  const handleMessageChange = (event) => {
+    setEnteredMessage(event.target.value);
+    setMessageError(""); // Clear any existing error message when user starts typing
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    //       console.log(enteredEmail, enteredFullName, enteredMessage.split(/\s+/).length);
+
+    // Check if the entered email is valid
+    if (!isValidEmail(enteredEmail)) {
+      setEmailError("Enter a valid email address!");
+      return; // Prevent further execution
+    }
+
+    // Check maximum message length
+    if (enteredMessage.split(/\s+/).length > 200) {
+      setMessageError("Message should be less than 200 words.");
+      return; // Prevent further execution
+    }
+
+    // Check maximum name length
+    if (enteredFullName.split(/\s+/).length > 10) {
+      setNameError("Name should be less than 10 words.");
+      return; // Prevent further execution
+    }
+
+    // Check maximum full name length
+    if (enteredFullName.split(/\s+/).length > 10) {
+      setNameError("Full name should be less than 10 words.");
+      return; // Prevent further execution
+    }
+
+    const userData = {
+      full_name: enteredFullName.toString(),
+      email: enteredEmail.toString(),
+      subject: enteredSubject.toString(),
+      phone: enteredPhone.toString(),
+      message: enteredMessage.toString(),
+    };
+
+    try {
+      await saveUserMSGToDatabase(userData);
+      // Redirect to the success page after successful submission
+      window.location.href = "https://www.fintekera.com/message-success";
+//       window.location.href = "/message-success";
+
+    } catch (error) {
+      console.error("Error saving user message:", error.message);
+      // Handle any errors here
+    }
+  };
+
+
+
 
   return (
     <>
@@ -57,7 +176,7 @@ const Contact = () => {
               className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
             >
               <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Send a message
+                Contact Us
               </h2>
 
               <form
@@ -67,13 +186,15 @@ const Contact = () => {
                 <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
                   <input
                     type="text"
-                    placeholder="Full name"
+                    placeholder="Full Name"
+                    onChange={handleFullNameChange}
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
 
                   <input
                     type="email"
-                    placeholder="Email address"
+                    placeholder="Email"
+                    onChange={handleEmailChange}
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
                 </div>
@@ -82,12 +203,14 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Subject"
+                    onChange={handleSubjectChange}
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
 
                   <input
                     type="text"
-                    placeholder="Phone number"
+                    placeholder="Phone"
+                    onChange={handlePhoneChange}
                     className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
                   />
                 </div>
@@ -95,12 +218,14 @@ const Contact = () => {
                 <div className="mb-11.5 flex">
                   <textarea
                     placeholder="Message"
+                    onChange={handleMessageChange}
                     rows={4}
                     className="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
                   ></textarea>
                 </div>
 
                 <div className="flex flex-wrap gap-4 xl:justify-between ">
+                {/*}
                   <div className="mb-4 flex md:mb-0">
                     <input
                       id="default-checkbox"
@@ -132,25 +257,15 @@ const Contact = () => {
                       And consent cookie usage in browser.
                     </label>
                   </div>
+                  */}
 
                   <button
                     aria-label="send message"
+                    onClick={handleSubmit}
+                    type="submit"
                     className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark"
                   >
-                    Send Message
-                    <svg
-                      className="fill-white"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.4767 6.16664L6.00668 1.69664L7.18501 0.518311L13.6667 6.99998L7.18501 13.4816L6.00668 12.3033L10.4767 7.83331H0.333344V6.16664H10.4767Z"
-                        fill=""
-                      />
-                    </svg>
+                    Submit
                   </button>
                 </div>
               </form>
@@ -175,23 +290,24 @@ const Contact = () => {
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
               <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Find us
+                Find Us
               </h2>
 
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Our Loaction
+                  Location:
                 </h3>
-                <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
+                <p>San Jose, USA</p>
               </div>
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Email Address
+                  Email:
                 </h3>
                 <p>
-                  <a href="#">yourmail@domainname.com</a>
+                  <a href="mailto:info@fintekera.com">info@fintekera.com</a>
                 </p>
               </div>
+              {/*
               <div>
                 <h4 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
                   Phone Number
@@ -200,6 +316,7 @@ const Contact = () => {
                   <a href="#">+009 42334 6343 843</a>
                 </p>
               </div>
+              */}
             </motion.div>
           </div>
         </div>
