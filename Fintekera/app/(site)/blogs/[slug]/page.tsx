@@ -85,7 +85,7 @@ export default async function Post({ params }: Props) {
       <section className="pt-[150px] pb-[120px] flex justify-center">
         <div className="container">
           <div className="flex flex-wrap justify-center -mx-4">
-            <div className="w-full px-4 lg:w-8/12">
+            <div className="w-full px-8 lg:w-8/12">
               <div>
                 <h1 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                   {post?.title}
