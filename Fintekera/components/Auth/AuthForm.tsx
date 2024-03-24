@@ -32,7 +32,7 @@ const AuthForm = ({ callback }) => {
   const { setUsername, setPassword, handleSubmit, error } = useAuth(callback);
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen px-6">
       <form onSubmit={handleSubmit} className="flex flex-col max-w-md w-full">
         <TextField
           type="text"
