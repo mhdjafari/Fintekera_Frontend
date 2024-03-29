@@ -192,15 +192,15 @@ const Contact = () => {
                     )}
                   </div>
                   <div className="lg:w-1/2">
-                        <input
-                          type="email"
-                          placeholder="Email"
-                          onChange={handleEmailChange}
-                          className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                        />
-                        {emailError && (
-                          <p className="text-red-500 text-sm">{emailError}</p>
-                        )}
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      onChange={handleEmailChange}
+                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                    />
+                    {emailError && (
+                      <p className="text-red-500 text-sm">{emailError}</p>
+                    )}
                   </div>
                 </div>
 

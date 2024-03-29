@@ -53,8 +53,15 @@ const AuthForm = ({ callback }) => {
           type="submit"
           variant="contained"
           color="primary"
-          className="mt-8" // Increase the gap between fields and button
-          style={{ width: "150px", backgroundColor: "#000", color: "#fff", borderRadius: "999px" }}
+          className="mt-4 pt-3 pb-3"
+          style={{
+            width: "150px",
+            backgroundColor: "#000",
+            color: "#fff",
+            borderRadius: "999px",
+            textTransform: "none" // Setting text-transform to "none"
+          }}
+          disableElevation
         >
           Submit
         </Button>
