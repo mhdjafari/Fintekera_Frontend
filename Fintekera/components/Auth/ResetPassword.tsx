@@ -71,7 +71,7 @@ const ResetPassword = () => {
     try {
       // Your form submission logic
       const responseData = await checkEmailInDatabase(userData);
-      console.log(responseData);
+//       console.log(responseData);
       if (responseData === "Password is reset successfully.") {
         // Redirect to the success page after successful submission
         window.location.href = "https://www.fintekera.com/reset-password-success";

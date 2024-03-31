@@ -31,7 +31,7 @@ const Dash = ({ customerID, productID, productType }) => {
         setNumApiCall(init_call);
         setNumRemainApiCall(remaining_call);
         setAPIKey(api_key);
-        console.log(init_call, remaining_call, api_key);
+//         console.log(init_call, remaining_call, api_key);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -50,15 +50,6 @@ const Dash = ({ customerID, productID, productType }) => {
       const apiKey = cryptoRandomString({ length: 24, type: "url-safe" });
       setAPIKey(apiKey);
 
-      console.log(
-        "Saving data",
-        customerID,
-        productID,
-        productType,
-        initAPICount,
-        initRemainAPICalls,
-        apiKey
-      );
       const fetchData = async () => {
         try {
           const status = await StoreUserInfo({
@@ -69,7 +60,6 @@ const Dash = ({ customerID, productID, productType }) => {
             initRemainAPICalls,
             apiKey,
           });
-          console.log("New API Key:", status);
         } catch (error) {
           console.error("Error:", error);
         }

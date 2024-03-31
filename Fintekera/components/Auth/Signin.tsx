@@ -1,23 +1,20 @@
 "use client";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const checkInfoInDatabase = async (userData) => {
   try {
-    const response = await fetch(
-      "https://api.fintekera.com/admin/signin-fin",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "api-key": process.env.BACKEND_API_KEY,
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch("https://api.fintekera.com/admin/signin-fin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "api-key": process.env.BACKEND_API_KEY,
+      },
+      body: JSON.stringify(userData),
+    });
 
     if (response.ok) {
       return await response.json();
@@ -33,7 +30,7 @@ const checkInfoInDatabase = async (userData) => {
 const Signin = () => {
   const router = useRouter();
   const [enteredEmail, setEnteredEmail] = useState("");
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleEmailChange = (event) => {
@@ -56,14 +53,17 @@ const Signin = () => {
 
     try {
       const responseData = await checkInfoInDatabase(userData);
-        console.log(responseData)
-        if (typeof responseData === 'string') {
-          setError(responseData);
-        }
-      if (typeof responseData === 'object' && responseData.Customer_ID !== undefined) {
+      //         console.log(responseData)
+      if (typeof responseData === "string") {
+        setError(responseData);
+      }
+      if (
+        typeof responseData === "object" &&
+        responseData.Customer_ID !== undefined
+      ) {
         const customerID = responseData.Customer_ID.toString();
-        const productID = '1';
-        const productType = 'Free';
+        const productID = "1";
+        const productType = "Free";
 
         if (customerID) {
           router.push(`/dashboard/${customerID}/${productID}/${productType}`);
@@ -160,8 +160,8 @@ const Signin = () => {
                   >
                     Forgot Password
                   </Link>
-                                    <span className="ml-2">|</span>
-                                    <Link
+                  <span className="ml-2">|</span>
+                  <Link
                     href="/auth/change-password"
                     className="ml-2 text-black hover:text-primary dark:text-white dark:hover:text-primary"
                   >

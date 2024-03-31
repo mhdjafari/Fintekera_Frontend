@@ -59,7 +59,7 @@ const StoreUserInfo = async ({
 
   try {
     const status = await saveInfoInDatabase(userData);
-    console.log("status:", status);
+//     console.log("status:", status);
     return status;
   } catch (error) {
     console.error("Error:", error);

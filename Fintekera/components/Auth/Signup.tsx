@@ -4,23 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
-
 const saveUserMSGToDatabase = async (userData) => {
   try {
     // Make a fetch or Axios request to your server API to save data to the PostgreSQL database
-    const response = await fetch(
-      "https://api.fintekera.com/admin/signup-fin",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "api-key": process.env.BACKEND_API_KEY, // Use environment variable
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch("https://api.fintekera.com/admin/signup-fin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "api-key": process.env.BACKEND_API_KEY, // Use environment variable
+      },
+      body: JSON.stringify(userData),
+    });
 
     if (response.ok) {
       // If response is okay, parse and return response data
@@ -38,9 +33,9 @@ const saveUserMSGToDatabase = async (userData) => {
 
 // Function to validate email format
 const isValidEmail = (email) => {
-// Regular expression to validate email format
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-return emailRegex.test(email);
+  // Regular expression to validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 };
 
 const isValidPassword = (enteredPassword) => {
@@ -71,11 +66,7 @@ const isValidPassword = (enteredPassword) => {
   return true;
 };
 
-
-
-
 const Signup = () => {
-
   const [enteredFullName, setEnteredFullName] = useState("");
   const [enteredCompany, setEnteredCompany] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -136,12 +127,10 @@ const Signup = () => {
 
     const passwordValidity = isValidPassword(enteredPassword);
     if (passwordValidity !== true) {
-  // Password is invalid, display error message
-    setPasswordError(passwordValidity);
-    return;
+      // Password is invalid, display error message
+      setPasswordError(passwordValidity);
+      return;
     }
-
-
 
     const userData = {
       full_name: enteredFullName.toString(),
@@ -150,24 +139,23 @@ const Signup = () => {
       password: enteredPassword.toString(),
     };
 
-        console.log(userData);
-            try {
-          // Your form submission logic
-          const responseData = await saveUserMSGToDatabase(userData);
-          console.log(responseData);
-          if (responseData === "Signed up successfully.") {
-            // Redirect to the success page after successful submission
-            window.location.href = "https://www.fintekera.com/signup-success";
-          } else {
-            setEmailError(responseData);
-          }
-        } catch (error) {
-          // Handle errors
-          console.error("Error:", error);
-          // Handle error with setEmailError or other error handling logic
-        }
+    //         console.log(userData);
+    try {
+      // Your form submission logic
+      const responseData = await saveUserMSGToDatabase(userData);
+      //           console.log(responseData);
+      if (responseData === "Signed up successfully.") {
+        // Redirect to the success page after successful submission
+        window.location.href = "https://www.fintekera.com/signup-success";
+      } else {
+        setEmailError(responseData);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+      // Handle error with setEmailError or other error handling logic
+    }
   };
-
 
   return (
     <>
@@ -212,54 +200,58 @@ const Signup = () => {
               Create an Account
             </h2>
             <form>
-                <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
-                  <div className="lg:w-5/12"> {/* Adjusted width for full name */}
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      onChange={handleFullNameChange}
-                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                    />
-                    {nameError && (
-                      <p className="text-red-500 text-sm">{nameError}</p>
-                    )}
-                  </div>
-                  <div className="lg:w-5/12"> {/* Adjusted width for company */}
-                    <input
-                      type="text"
-                      placeholder="Company"
-                      onChange={handleCompanyChange}
-                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                    />
-                    {companyError && (
-                      <p className="text-red-500 text-sm">{companyError}</p>
-                    )}
-                  </div>
+              <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
+                <div className="lg:w-5/12">
+                  {" "}
+                  {/* Adjusted width for full name */}
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    onChange={handleFullNameChange}
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                  />
+                  {nameError && (
+                    <p className="text-red-500 text-sm">{nameError}</p>
+                  )}
                 </div>
-                <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
-                  <div className="lg:w-5/12">
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      onChange={handleEmailChange}
-                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                    />
-                    {emailError && (
-                      <p className="text-red-500 text-sm">{emailError}</p>
-                    )}
-                  </div>
-                  <div className="lg:w-5/12">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      onChange={handlePasswordChange}
-                      className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
-                    />
-                    {passwordError && (
-                      <p className="text-red-500 text-sm">{passwordError}</p>
-                    )}
-                  </div>
+                <div className="lg:w-5/12">
+                  {" "}
+                  {/* Adjusted width for company */}
+                  <input
+                    type="text"
+                    placeholder="Company"
+                    onChange={handleCompanyChange}
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                  />
+                  {companyError && (
+                    <p className="text-red-500 text-sm">{companyError}</p>
+                  )}
                 </div>
+              </div>
+              <div className="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14">
+                <div className="lg:w-5/12">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={handleEmailChange}
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                  />
+                  {emailError && (
+                    <p className="text-red-500 text-sm">{emailError}</p>
+                  )}
+                </div>
+                <div className="lg:w-5/12">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={handlePasswordChange}
+                    className="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                  />
+                  {passwordError && (
+                    <p className="text-red-500 text-sm">{passwordError}</p>
+                  )}
+                </div>
+              </div>
               <div className="flex flex-wrap gap-10 md:justify-between xl:gap-15">
                 <button
                   aria-label="signup with email and password"
@@ -267,7 +259,7 @@ const Signup = () => {
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
                 >
                   Create Account
-                    <svg
+                  <svg
                     className="fill-white"
                     width="14"
                     height="14"

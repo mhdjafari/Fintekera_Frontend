@@ -36,7 +36,7 @@ const GetUserAPIData = async ({ customerID, productID, productType }) => {
 
   try {
     const remainingAPICallsData = await getInfoFromDatabase(userQuery);
-    console.log("remainingAPICallsData:", remainingAPICallsData);
+//     console.log("remainingAPICallsData:", remainingAPICallsData);
     return remainingAPICallsData;
   } catch (error) {
     console.error("Error:", error);

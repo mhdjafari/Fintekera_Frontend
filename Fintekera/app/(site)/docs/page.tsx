@@ -48,14 +48,14 @@ export default function DocsPage() {
                 </div>
 
                 <p className="text-base text-body-color dark:text-body-color-dark">
-                  Please visit:{" "}
-                  <b>
-                    <a href="https://fintekera.com/docs">
-                      www.fintekera.com/docs
-                    </a>
-                  </b>{" "}
-                  to access the latest documentation and learn how to integrate
-                  API endpoints, please reach out to our customer service team
+{/*                   Please visit:{" "} */}
+{/*                   <b> */}
+{/*                     <a href="https://fintekera.com/docs"> */}
+{/*                       www.fintekera.com/docs */}
+{/*                     </a> */}
+{/*                   </b>{" "} */}
+                  Read the documentation and learn how to integrate income
+                  API endpoint. Please reach out to our customer service team
                   for further assistance if required.{" "}
                 </p>
               </div>
