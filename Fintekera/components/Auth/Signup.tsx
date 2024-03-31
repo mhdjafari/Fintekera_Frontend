@@ -157,7 +157,7 @@ const Signup = () => {
           console.log(responseData);
           if (responseData === "Signed up successfully.") {
             // Redirect to the success page after successful submission
-            window.location.href = "https://www.fintekera.com/sign-password-success";
+            window.location.href = "https://www.fintekera.com/signup-success";
           } else {
             setEmailError(responseData);
           }

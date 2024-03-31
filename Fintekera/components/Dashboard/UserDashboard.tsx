@@ -1,14 +1,14 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Typography, IconButton, Paper } from '@mui/material';
-import { FileCopyOutlined as CopyIcon } from '@mui/icons-material';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Typography, IconButton, Paper } from "@mui/material";
+import { FileCopyOutlined as CopyIcon } from "@mui/icons-material";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { motion } from "framer-motion";
-import GetUserAPIData from './GetData';
-import StoreUserInfo from './StoreData';
-import cryptoRandomString from 'crypto-random-string';
+import GetUserAPIData from "./GetData";
+import StoreUserInfo from "./StoreData";
+import cryptoRandomString from "crypto-random-string";
 
 const toTitleCase = (str) => {
   return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -17,12 +17,16 @@ const toTitleCase = (str) => {
 const Dash = ({ customerID, productID, productType }) => {
   const [numApiCall, setNumApiCall] = useState(0);
   const [numRemainApiCall, setNumRemainApiCall] = useState(0);
-  const [APIKey, setAPIKey] = useState('');
+  const [APIKey, setAPIKey] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const APICallsData = await GetUserAPIData({ customerID, productID, productType });
+        const APICallsData = await GetUserAPIData({
+          customerID,
+          productID,
+          productType,
+        });
         const { init_call, remaining_call, api_key } = APICallsData;
         setNumApiCall(init_call);
         setNumRemainApiCall(remaining_call);
@@ -43,14 +47,29 @@ const Dash = ({ customerID, productID, productType }) => {
 
       setNumApiCall(initAPICount);
       setNumRemainApiCall(initRemainAPICalls);
-      const apiKey = cryptoRandomString({ length: 24, type: 'url-safe' });
+      const apiKey = cryptoRandomString({ length: 24, type: "url-safe" });
       setAPIKey(apiKey);
 
-    console.log('Saving data', customerID, productID, productType, initAPICount, initRemainAPICalls, apiKey);
+      console.log(
+        "Saving data",
+        customerID,
+        productID,
+        productType,
+        initAPICount,
+        initRemainAPICalls,
+        apiKey
+      );
       const fetchData = async () => {
         try {
-          const status = await StoreUserInfo({ customerID, productID, productType, initAPICount, initRemainAPICalls, apiKey });
-          console.log('New API Key:', status);
+          const status = await StoreUserInfo({
+            customerID,
+            productID,
+            productType,
+            initAPICount,
+            initRemainAPICalls,
+            apiKey,
+          });
+          console.log("New API Key:", status);
         } catch (error) {
           console.error("Error:", error);
         }
@@ -92,80 +111,106 @@ const Dash = ({ customerID, productID, productType }) => {
               viewport={{ once: true }}
               className="animate_top w-full md:w-3/5 lg:w-3/4 xl:p-15"
             >
-<div className="flex justify-end mt-10">
-  <Link
-    href="/"
-    className="inline-flex items-center gap-2.5 rounded-full bg-black px-7.5 mt-4 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
-    style={{ height: '40px' }} // Set height to match button
-  >
-    Sign Out
-  </Link>
-</div>
+              <Paper className="bg-white rounded-lg shadow-lg p-8 space-y-8 mt-10 m-3 shadow-md sm:mt-20 sm:m-6 md:p-10">
+                {/* Customer Information Section */}
+                <div className="bg-blue-400 rounded-lg p-4">
+                  <Typography
+                    variant="h5"
+                    className="font-bold text-gray-800 mb-2"
+                  >
+                    Customer Information
+                  </Typography>
+                  <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="mb-4 sm:mb-0">
+                      <Typography variant="body1" className="text-gray-600">
+                        Customer ID:
+                      </Typography>
+                      <Typography variant="body1">{customerID}</Typography>
+                    </div>
+                    <div className="mb-4 sm:mb-0">
+                      <Typography variant="body1" className="text-gray-600">
+                        Product ID:
+                      </Typography>
+                      <Typography variant="body1">{productID}</Typography>
+                    </div>
+                    <div>
+                      <Typography variant="body1" className="text-gray-600">
+                        Product Type:
+                      </Typography>
+                      <Typography variant="body1">
+                        {displayProductType}
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
 
-<Paper className="bg-white rounded-lg shadow-lg p-8 space-y-8 mt-10 m-3 shadow-md sm:mt-20 sm:m-6 md:p-10">
-  {/* Customer Information Section */}
-  <div className="bg-blue-400 rounded-lg p-4">
-    <Typography variant="h5" className="font-bold text-gray-800 mb-2">Customer Information</Typography>
-    <div className="flex flex-col sm:flex-row justify-between">
-      <div className="mb-4 sm:mb-0">
-        <Typography variant="body1" className="text-gray-600">Customer ID:</Typography>
-        <Typography variant="body1">{customerID}</Typography>
-      </div>
-      <div className="mb-4 sm:mb-0">
-        <Typography variant="body1" className="text-gray-600">Product ID:</Typography>
-        <Typography variant="body1">{productID}</Typography>
-      </div>
-      <div>
-        <Typography variant="body1" className="text-gray-600">Product Type:</Typography>
-        <Typography variant="body1">{displayProductType}</Typography>
-      </div>
-    </div>
-  </div>
+                {/* API Information Section */}
+                <div className="bg-green-400 rounded-lg p-4">
+                  <Typography
+                    variant="h5"
+                    className="font-bold text-gray-800 mb-2"
+                  >
+                    API Information
+                  </Typography>
+                  <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="mb-4 sm:mb-0">
+                      <Typography variant="body1" className="text-gray-600">
+                        API Key:
+                      </Typography>
+                    </div>
+                    <div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-0">
+                      <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
+                        <div className="rounded-lg bg-green-100 rounded-lg mr-2 sm:mr-0 sm:mb-0">
+                          <Typography
+                            variant="body1"
+                            className="api-key-text text-sm md:text-base lg:text-lg p-1 xl:text-xl"
+                          >
+                            {APIKey}
+                          </Typography>
+                        </div>
+                        <CopyToClipboard text={APIKey}>
+                          <IconButton aria-label="copy api key" size="small">
+                            <CopyIcon fontSize="small" />
+                          </IconButton>
+                        </CopyToClipboard>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="mb-4 sm:mb-0">
+                      <Typography variant="body1" className="text-gray-600">
+                        Initial API Call:
+                      </Typography>
+                      <Typography variant="body1">{numApiCall}</Typography>
+                    </div>
+                    <div>
+                      <Typography variant="body1" className="text-gray-600">
+                        Remaining API Calls:
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        className={` ${
+                          numRemainApiCall !== null && numRemainApiCall <= 0
+                            ? "text-red-500"
+                            : ""
+                        }`}
+                      >
+                        {numRemainApiCall}
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
+              </Paper>
 
-  {/* API Information Section */}
-  <div className="bg-green-400 rounded-lg p-4">
-    <Typography variant="h5" className="font-bold text-gray-800 mb-2">API Information</Typography>
-    <div className="flex flex-col sm:flex-row justify-between">
-      <div className="mb-4 sm:mb-0">
-        <Typography variant="body1" className="text-gray-600">API Key:</Typography>
-      </div>
-<div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-0">
-  <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
-    <div className="rounded-lg bg-green-100 rounded-lg mr-2 sm:mr-0 sm:mb-0">
-      <Typography variant="body1" className="api-key-text text-sm md:text-base lg:text-lg p-1 xl:text-xl">{APIKey}</Typography>
-    </div>
-    <CopyToClipboard text={APIKey}>
-      <IconButton aria-label="copy api key" size="small">
-        <CopyIcon fontSize="small" />
-      </IconButton>
-    </CopyToClipboard>
-  </div>
-</div>
-
-
-
-    </div>
-    <div className="flex flex-col sm:flex-row justify-between">
-      <div className="mb-4 sm:mb-0">
-        <Typography variant="body1" className="text-gray-600">Initial API Call:</Typography>
-        <Typography variant="body1">{numApiCall}</Typography>
-      </div>
-      <div>
-        <Typography variant="body1" className="text-gray-600">Remaining API Calls:</Typography>
-        <Typography variant="body1" className={` ${numRemainApiCall !== null && numRemainApiCall <= 0 ? 'text-red-500' : ''}`}>
-          {numRemainApiCall}
-        </Typography>
-      </div>
-    </div>
-
-  </div>
-
-</Paper>
-
-
-
-
-
+              <div className="flex justify-start mt-4">
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-black px-7.5 mt-4 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+                  style={{ height: "40px" }} // Set height to match button
+                >
+                  Sign Out
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>

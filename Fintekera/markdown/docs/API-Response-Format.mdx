@@ -1,0 +1,174 @@
+---
+title: API Response
+description: The format of the API response and description of the features
+date: 2024-4-10
+---
+
+## API Response
+
+
+#### Response Example:
+ - The output of the API response is a dictionary with the following keys and values:
+
+```js
+{
+  "ZIP_Code": "10002",
+  "Job_Title": "Software Engineer",
+  "State": "NY",
+  "Metropolitan": "New York-Newark-Jersey City, NY-NJ-PA",
+  "County": "New York",
+  "US_Level_Median_Income": 115617,
+  "US_Level_Lower_Bound_Income": 102898,
+  "US_Level_Upper_Bound_Income": 128335,
+  "State_Level_Median_Income": 118877,
+  "State_Level_Lower_Bound_Income": 105800,
+  "State_Level_Upper_Bound_Income": 131953,
+  "ZIP_Code_Level_Income": 122006,
+  "ZIP_Code_Level_Lower_Bound_Income": 108586,
+  "ZIP_Code_Level_Upper_Bound_Income": 135427,
+  "Confidence_Score": 100,
+  "BLS_Job_Category_Name": "Computer and Mathematical Occupations",
+  "Overall_Tax": 32367,
+  "Overall_Cost_of_Living": 84425,
+  "Discretionary_Cost_of_Living": 17790,
+  "Non_Discretionary_Cost_of_Living": 66635,
+  "Minimum_Disposable_Income": 5214,
+  "Maximum_Disposable_Income": 23004,
+  "Median_Disposable_Income": 14109,
+  "Minimum_Monthly_Affordable_Debt": 434.5,
+  "Maximum_Monthly_Affordable_Debt": 1917,
+  "Median_Monthly_Affordable_Debt": 1175.75,
+  "Minimum_Savings_Rate": 0.04,
+  "Maximum_Savings_Rate": 0.19,
+  "Median_Savings_Rate": 0.12,
+  "Savings_Runway_Month": 2.54,
+  "Savings_Runway_Rate": 0.21,
+  "Stated_Income_Assessment": "Overstated",
+  "Enhanced_Minimum_Disposable_Income": 1614,
+  "Enhanced_Maximum_Disposable_Income": 19404,
+  "Enhanced_Median_Disposable_Income": 10509,
+  "Enhanced_Minimum_Monthly_Affordable_Debt": 134.5,
+  "Enhanced_Maximum_Monthly_Affordable_Debt": 1617,
+  "Enhanced_Median_Monthly_Affordable_Debt": 875.75,
+  "Enhanced_Minimum_Savings_Rate": 0.01,
+  "Enhanced_Maximum_Savings_Rate": 0.16,
+  "Enhanced_Median_Savings_Rate": 0.09,
+  "Enhanced_Savings_Runway_Month": 1.89,
+  "Enhanced_Savings_Runway_Rate": 0.16,
+  "ATP_Assessment": "ATP Not Verified",
+  "Risk_Score": 49.33,
+  "Accuracy_Score": 51.13,
+  "Growth_Score": 80.73,
+  "Resilience_Score": 66.49,
+  "Reliability_Score": 59.95,
+  "Debt_Affordability_Score": 85.35,
+  "Homeownership_Score": 15,
+  "Financial_Stability_Score": 41.35
+}
+```
+
+#### Features Description:
+The descriptions of features will be provided in response are as follows:
+
+**Stated Income Assessment:**
+  - The stated income assessment is used to verify the accuracy of an applicant’s stated income. It checks if the income has been overstated, understated, or stated correctly.
+
+**Confidence Score**:
+  -  The confidence score indicates the prediction confidence, with a score range from 0 to 100.
+
+**US-Level / State-Level / ZIP-Level Income**:
+  -  Location-based income analysis enables the comparison of an applicant's stated income with verified income ranges at various geographical levels, including ZIP code, state, and the US. The analysis helps evaluate the applicant's income in relation to the income levels in their specific location and broader geographical areas.
+
+**ATP Assessment**:
+  -  ATP assessment is used to verify whether an applicant can afford the requested monthly payment or not.
+
+**Disposable Income**:
+  -  Disposable income analysis calculates the income left for an individual after deducting taxes and living expenses from their total income. The disposable income value is provided as an annual figure.
+
+**Enhanced Disposable Income**:
+  -  Enhanced disposable income takes existing debts into account, offering a comprehensive view of the applicant's financial situation. Enhanced disposable income value is provided as an annual figure.
+
+**Monthly Affordable Debt**:
+  -  This is the monthly amount the applicant can reasonably borrow based on their current financial situation and income. Debt affordability analysis is crucial in determining creditworthiness and preventing excessive debt burden.
+
+**Enhanced Monthly Affordable Debt**:
+  -  Enhanced monthly affordable debt takes existing debts into account, offering a comprehensive view of the applicant’s debt affordability.
+
+**Overall Tax**:
+  -  This is the estimated annual income tax. All income tax categories, including federal, state, local, and FICA taxes, are taken into account.
+
+**Overall Cost of Living**:
+  -  This represents the total annual discretionary and non-discretionary expenses for the applicant.
+
+**Discretionary Cost of Living**:
+  -  Discretionary expenses are non-essential and can be adjusted or eliminated based on personal preferences and financial circumstances (e.g., dining out, entertainment, luxury items). The value is provided as an annual figure.
+
+**Non-discretionary Cost of Living**:
+  -  Non-discretionary expenses are essential for daily living and cannot be easily adjusted or eliminated (e.g., housing costs, groceries, transportation, healthcare).
+
+**Savings Rate**:
+  -  Savings rate is the percentage of applicant income that is saved.
+
+**Enhanced Savings Rate**:
+  -  Enhanced savings rate takes existing debts into account.
+
+**Savings Runway Month**:
+  -  Savings runway represents the number of months an applicant can cover non-discretionary expenses with one year's worth of savings.
+
+**Savings Runway Rate**:
+  -  Savings runway rate is the percentage of annual non-discretionary expenses covered by one year of savings.
+
+**Enhanced Savings Runway Month**:
+  -  Enhanced savings runway takes existing debts into account.
+
+**Enhanced Savings Runway Rate**:
+  -  Enhanced savings runway takes existing debts into account.
+
+**Risk Score**:
+  -  Income Risk Score measures the risk associated with an applicant's stated income. If the applicant inflates or exaggerates their income, the score will be higher. The score is within a range of 0 to 100, where a higher score indicates a greater level of risk.
+
+**Accuracy Score**:
+  -  Income Accuracy Score measures the precision of the applicant's stated income. Deviations from the baseline income negatively impact the score. The score ranges from 0 to 100. A higher score indicates greater accuracy in reporting income, while lower scores suggest potential overstatement or understatement of income.
+
+**Growth Score**:
+  -  Income Growth Score measures the applicant's potential for future income growth. The score ranges from 0 to 100. A higher score indicates a greater potential for income growth in the future.
+
+**Resilience Score**:
+  -  Income Resilience Score assesses an individual's ability to handle financial challenges and meet financial obligations consistently over time. It considers factors such as income stability, savings, cost of living, and more. The score is measured on a scale from 0 to 100. A higher score indicates a greater capacity to manage unexpected expenses, income fluctuations, job loss, lifestyle changes, and other financial uncertainties. This score provides valuable insights into an individual's financial resilience and ability to maintain stability amid economic challenges.
+
+**Reliability Score**:
+  -  Income Reliability Score offers a comprehensive assessment of the applicant's stated income quality, income risk, income resilience, and income growth potential. The score ranges from 0 to 100. A higher score indicates greater income reliability, suggesting a more dependable and stable income profile for the applicant.
+
+**Debt Affordability Score**:
+  -  Debt Affordability Score assesses the applicant's ability to manage additional debt. The score ranges from 0 to 100. A higher debt affordability score indicates better capacity to handle debt responsibly and comfortably, while a lower score suggests potential financial strain or difficulty in managing additional debt.
+
+**Homeownership Score**:
+  -  Homeownership Score predicts an individual's likelihood of being a homeowner. The score ranges from 0 to 100. A higher score indicates a higher likelihood of homeownership, suggesting better financial stability and readiness to own a home.
+
+**Financial Stability Score**:
+  -  Financial Stability Score (FSS) is a comprehensive index that considers factors such as income risk, income growth potential, income resilience, debt affordability, and more. It provides a holistic assessment of an individual's financial situation, offering insights into their ability to handle financial challenges, manage debt responsibly, and maintain stability over time. The FSS serves as a valuable tool for evaluating and benchmarking financial well-being, providing a comprehensive view of one's financial health. The score ranges from 0 to 100, with a higher score indicating better financial stability and a stronger overall financial position.
+
+
+**Accuracy Score**:
+  -  Income Accuracy Score measures the precision of the applicant's stated income. Deviations from the baseline income negatively impact the score. The score ranges from 0 to 100. A higher score indicates greater accuracy in reporting income, while lower scores suggest potential overstatement or understatement of income.
+
+**Growth Score**:
+  -  Income Growth Score measures the applicant's potential for future income growth. The score ranges from 0 to 100. A higher score indicates a greater potential for income growth in the future.
+
+**Resilience Score**:
+  -  Income Resilience Score assesses an individual's ability to handle financial challenges and meet financial obligations consistently over time. It considers factors such as income stability, savings, cost of living, and more. The score is measured on a scale from 0 to 100. A higher score indicates a greater capacity to manage unexpected expenses, income fluctuations, job loss, lifestyle changes, and other financial uncertainties. This score provides valuable insights into an individual's financial resilience and ability to maintain stability amid economic challenges.
+
+**Reliability Score**:
+  -  Income Reliability Score offers a comprehensive assessment of the applicant's stated income quality, income risk, income resilience, and income growth potential. The score ranges from 0 to 100. A higher score indicates greater income reliability, suggesting a more dependable and stable income profile for the applicant.
+
+**Debt Affordability Score**:
+  -  Debt Affordability Score assesses the applicant's ability to manage additional debt. The score ranges from 0 to 100. A higher debt affordability score indicates better capacity to handle debt responsibly and comfortably, while a lower score suggests potential financial strain or difficulty in managing additional debt.
+
+**Homeownership Score**:
+  -  Homeownership Score predicts an individual's likelihood of being a homeowner. The score ranges from 0 to 100. A higher score indicates a higher likelihood of homeownership, suggesting better financial stability and readiness to own a home.
+
+**Financial Stability Score**:
+  -  Financial Stability Score (FSS) is a comprehensive index that considers factors such as income risk, income growth potential, income resilience, debt affordability, and more. It provides a holistic assessment of an individual's financial situation, offering insights into their ability to handle financial challenges, manage debt responsibly, and maintain stability over time. The FSS serves as a valuable tool for evaluating and benchmarking financial well-being, providing a comprehensive view of one's financial health. The score ranges from 0 to 100, with a higher score indicating better financial stability and a stronger overall financial position.
+
+
+

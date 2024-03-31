@@ -160,6 +160,13 @@ const Signin = () => {
                   >
                     Forgot Password
                   </Link>
+                                    <span className="ml-2">|</span>
+                                    <Link
+                    href="/auth/change-password"
+                    className="ml-2 text-black hover:text-primary dark:text-white dark:hover:text-primary"
+                  >
+                    Change Password
+                  </Link>
                   <span className="ml-2">|</span>
                   <Link
                     href="/auth/reset-password"

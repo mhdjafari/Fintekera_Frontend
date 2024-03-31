@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React from "react";
 
 const getInfoFromDatabase = async (userQuery) => {
   try {
@@ -36,7 +36,7 @@ const GetUserAPIData = async ({ customerID, productID, productType }) => {
 
   try {
     const remainingAPICallsData = await getInfoFromDatabase(userQuery);
-    console.log('remainingAPICallsData:', remainingAPICallsData);
+    console.log("remainingAPICallsData:", remainingAPICallsData);
     return remainingAPICallsData;
   } catch (error) {
     console.error("Error:", error);
@@ -45,4 +45,3 @@ const GetUserAPIData = async ({ customerID, productID, productType }) => {
 };
 
 export default GetUserAPIData;
-

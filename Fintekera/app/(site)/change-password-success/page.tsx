@@ -192,15 +192,15 @@ const MailSuccessPage = () => {
                 </div>
                   <div className="max-w-screen-lg mx-auto">
                       <h4 className="mb-8 text-base font-bold text-black dark:text-white sm:text-2xl">
-                        Your Request is Submitted Successfully. <br />
-                        Check Your Email!
+                        Password is Changed Successfully. <br />
+                        Use New Password to Sign In.
                       </h4>
                   </div>
                 <a
-                  href="/auth/change-password"
+                  href="/auth/signin"
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
                 >
-                  Return to Change Password
+                  Return to Sign In
                 </a>
 
               </div>
