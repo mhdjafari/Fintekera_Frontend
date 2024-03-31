@@ -7,8 +7,17 @@ const VideoPlayer = ({ videoFileName }) => {
     const videoElement = videoRef.current;
 
     const handleVideoEnd = () => {
-      videoElement.currentTime = 0;
-      videoElement.play();
+      // Pause the video
+      videoElement.pause();
+
+      // Add a small delay to allow the transition to complete
+      setTimeout(() => {
+        // Reset the currentTime to 0
+        videoElement.currentTime = 0;
+
+        // Play the video again
+        videoElement.play();
+      }, 3000); // Adjust the delay time as needed
     };
 
     videoElement.addEventListener('ended', handleVideoEnd);
