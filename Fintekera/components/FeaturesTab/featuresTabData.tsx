@@ -20,7 +20,7 @@ const featuresTabData: FeatureTab[] = [
     desc1: "• Credit underwriting",
     desc2: "• Co-borrower/collateral requirement",
     desc3: "• Income and ATP verification",
-    desc4: "• Credit Line Management",
+    desc4: "• Credit line management",
     desc5: "• Risk-based pricing",
     desc6: "• Credit expansion",
     desc7: "• Thin file underwriting",
