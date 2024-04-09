@@ -25,6 +25,8 @@ const SingleBrand = ({ brand }: { brand: Brand }) => {
         transition={{ duration: 1, delay: id }}
         viewport={{ once: true }}
         href={href}
+        target="_blank" // Open the link in a new tab/window
+        rel="noopener noreferrer" // Recommended security attributes for external links
         className="animate_top mx-w-full relative block h-10 w-[98px]"
       >
         <Image

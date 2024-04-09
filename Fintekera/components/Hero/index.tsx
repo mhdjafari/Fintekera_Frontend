@@ -23,7 +23,7 @@ const Hero = () => {
                 data-wow-delay=".2s"
               >
                 <Reveal y={15}>
-                  <h1 className="mb-5 font-bold leading-tight text-black dark:text-white text-2xl sm:text-1xl md:text-3xl lg:text-4xl xl:text-4xl">
+                  <h1 className="mb-5 font-bold leading-tight text-black dark:text-white text-2xl sm:text-1xl md:text-3xl lg:text-6xl xl:text-4xl">
                     Cutting-Edge AI-Powered Solutions for Income and
                     Ability-to-Pay Verifications{" "}
                   </h1>
@@ -50,7 +50,6 @@ const Hero = () => {
                 </div>
               </Reveal>
             </div>
-
             <div className="animate_right bg-white md:w-1/2">
               <Reveal y={15}>
                 <div className="relative bg-white 2xl:-mr-7.5">
