@@ -16,7 +16,7 @@ const Hero = () => {
     <>
       <section className="overflow-hidden pb-20 pt-35 md:pt-40 xl:pb-25 xl:pt-46">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
-          <div className="flex lg:items-center lg:gap-8 xl:gap-32.5">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5">
             <div className=" md:w-1/2">
               <div
                 className="wow fadeInUp mx-auto max-w-[800px] text-center"
@@ -51,7 +51,7 @@ const Hero = () => {
               </Reveal>
             </div>
 
-            <div className="animate_right bg-white md:w-1/2 lg:block">
+            <div className="animate_right bg-white md:w-1/2">
               <Reveal y={15}>
                 <div className="relative bg-white 2xl:-mr-7.5">
                   {/*}
@@ -66,7 +66,6 @@ const Hero = () => {
                   <div className="m-4">
                     <VideoPlayer videoFileName="PayloadAnimation.mp4" />
                   </div>
-                  {/*                     </div> */}
                 </div>
               </Reveal>
             </div>
