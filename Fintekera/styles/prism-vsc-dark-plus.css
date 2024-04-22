@@ -1,3 +1,7 @@
+code {
+  text-wrap: wrap;
+}
+
 pre[class*="language-"],
 code[class*="language-"] {
   color: #d4d4d4;
@@ -242,16 +246,21 @@ code[class*="language-typescript"],
 pre[class*="language-tsx"],
 code[class*="language-tsx"] {
   color: #9cdcfe;
+  text-wrap: wrap;
+
 }
 
 pre[class*="language-css"],
 code[class*="language-css"] {
   color: #ce9178;
+  text-wrap: wrap;
+
 }
 
 pre[class*="language-html"],
 code[class*="language-html"] {
   color: #d4d4d4;
+  text-wrap: wrap;
 }
 
 .language-regex .token.anchor {
