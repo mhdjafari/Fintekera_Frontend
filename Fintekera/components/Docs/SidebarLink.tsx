@@ -2,7 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const SidebarLink = ({ post }) => {
+type Post = {
+  title: string;
+  slug: string;
+};
+
+const SidebarLink = ({ post } : { post: Post }) => {
   const pathUrl = usePathname();
 
   return (
@@ -10,10 +15,10 @@ const SidebarLink = ({ post }) => {
       <li className="block">
         <Link
           href={`/docs/${post?.slug}`}
-          className={`text-base py-2 px-3 rounded-sm flex w-full ${
+          className={`flex w-full rounded-sm px-3 py-2 text-base ${
             pathUrl === `/docs/${post?.slug}`
-              ? "text-black dark:text-white bg-gray-light dark:bg-white/5"
-              : "text-body-color dark:text-body-color-dark dark:hover:bg-white/5 hover:bg-gray-light"
+              ? "bg-gray-light text-black dark:bg-white/5 dark:text-white"
+              : "text-body-color hover:bg-gray-light dark:text-body-color-dark dark:hover:bg-white/5"
           }`}
         >
           {post?.title}
