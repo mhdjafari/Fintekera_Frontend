@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Post = {
-  title: string;
-  slug: string;
-};
+// type Post = {
+//   title: string;
+//   slug: string;
+// };
 
-const SidebarLink = ({ post } : { post: Post }) => {
+const SidebarLink = ({ post } : { post}) => {
   const pathUrl = usePathname();
 
   return (
