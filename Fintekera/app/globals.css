@@ -116,12 +116,25 @@
 }
 
 pre {
-  @apply relative mb-2 rounded-lg bg-strokedark px-4 py-2;
+  @apply relative bg-strokedark px-4 py-2 rounded-lg mb-2;
 }
+
 .prism-copy-button {
   @apply absolute right-2 top-2 h-[26px] rounded bg-white px-4 text-primary;
 }
 
+{/*}
+.prism-copy-button {
+  @apply absolute right-2 top-2 h-[26px] rounded bg-white px-4 text-primary;
+}
+*/}
 .active-tab {
   @apply bg-stroke text-black dark:bg-blackho dark:text-white;
 }
+
+
+
+
+
+
+

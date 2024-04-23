@@ -26,9 +26,6 @@
   }
 }
 
-.blog-details {
-  @apply text-base text-body-color dark:text-body-color-dark;
-}
 
 /* Blog Details Style */
 {/*

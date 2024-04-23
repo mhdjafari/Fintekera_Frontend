@@ -77,7 +77,7 @@ export default function MdxFileRenderer({ code }) {
   return (
     <div
       ref={rootRef}
-      className="blog-details"
+      className="blog-details-docs"
       dangerouslySetInnerHTML={{ __html: code }}
     ></div>
   );
