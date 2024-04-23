@@ -1,7 +1,8 @@
 import React from "react";
 import { Inter } from "next/font/google";
-import "../../styles/prism-vsc-dark-plus.css";
+// import "../../styles/prism-vsc-dark-plus.css";
 import "../../styles/index.css";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
