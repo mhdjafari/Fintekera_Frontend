@@ -74,7 +74,6 @@ export default function MdxFileRenderer({ code }: any) {
 
     return;
   });
-    console.log('copy', copy)
   return (
     <div
       ref={rootRef}
