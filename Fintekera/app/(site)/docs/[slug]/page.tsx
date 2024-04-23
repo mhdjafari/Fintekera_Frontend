@@ -74,7 +74,6 @@
 //     </>
 //   );
 // }
-
 import SidebarLink from "@/components/Docs/SidebarLink";
 import { getAllPosts, getPostBySlug } from "@/lib/markdown";
 import markdownToHtml from "@/lib/markdownToHtml";
@@ -124,7 +123,7 @@ export default async function Post({ params }: Props) {
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
   const post = getPostBySlug(params.slug, ["title", "author", "content"]);
   const content = await markdownToHtml(post.content || "");
-
+    console.log(content)
   return (
     <>
       <title>{`${post?.title} - Startup`}</title>

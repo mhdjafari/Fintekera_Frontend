@@ -54,10 +54,11 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export default function MdxFileRenderer({ code }) {
+export default function MdxFileRenderer({ code }: any) {
   const rootRef = useRef(null);
   useEffect(() => {
-    const allPres = rootRef.current.querySelectorAll("pre");
+    //@ts-ignore
+    const allPres = rootRef?.current?.querySelectorAll("pre");
 
     for (const pre of allPres) {
       const code = pre.firstElementChild;
@@ -73,17 +74,17 @@ export default function MdxFileRenderer({ code }) {
 
     return;
   });
-
+    console.log('copy', copy)
   return (
     <div
       ref={rootRef}
-      className="blog-details-docs"
+      className="blog-details"
       dangerouslySetInnerHTML={{ __html: code }}
     ></div>
   );
 }
 
-function createCopyButton(codeEl) {
+function createCopyButton(codeEl : any) {
   const button = document.createElement("button");
   button.classList.add("prism-copy-button");
   button.textContent = "Copy";
