@@ -298,18 +298,21 @@ const Contact = () => {
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
               <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Find Us
+                Email Us
               </h2>
-
+             {/*}
               <div className="5 mb-7">
+
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
                   Location:
                 </h3>
                 <p>San Jose, USA</p>
               </div>
-              <div className="5 mb-7">
+              */}
+              <div className="">
+
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Email:
+                  Reach Out to Schedule a Demo:
                 </h3>
                 <p>
                   <a href="mailto:info@fintekera.com">info@fintekera.com</a>
